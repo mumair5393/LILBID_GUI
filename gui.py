@@ -386,20 +386,18 @@ class MyWindow:
         label_peaks_button = tk.Button(new, text='Label Peaks',
                                        command=lambda: self.label_peaks(file_name, fig_subplot, lc, analysis_canvas))
         label_peaks_button.pack()  # A tk.DrawingArea.
-
+        """
         reset_peaks_selection = tk.Button(new, text='Reset peaks selection',
                                           command=lambda: self.reset_canvas(linecolors, analysis_canvas, lc,
                                                                             fig_subplot))
         reset_peaks_selection.pack()
-
+        """
         snap_cursor = SnaptoCursor(fig_subplot, x, y, segments, linecolors, analysis_canvas)
         analysis_canvas.mpl_connect('motion_notify_event',
                                     lambda event: self.mouse_move(event, x, y, annot, analysis_canvas))
-        """
         analysis_canvas.mpl_connect('button_press_event',
                                     lambda event: self.on_click(event, x, y, linecolors, analysis_canvas, lc,
                                                              fig_subplot))
-        """
         toolbar = NavigationToolbar2Tk(analysis_canvas, new)
         toolbar.update()
         analysis_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
