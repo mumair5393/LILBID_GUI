@@ -395,10 +395,11 @@ class MyWindow:
         snap_cursor = SnaptoCursor(fig_subplot, x, y, segments, linecolors, analysis_canvas)
         analysis_canvas.mpl_connect('motion_notify_event',
                                     lambda event: self.mouse_move(event, x, y, annot, analysis_canvas))
+        """
         analysis_canvas.mpl_connect('button_press_event',
                                     lambda event: self.on_click(event, x, y, linecolors, analysis_canvas, lc,
-                                                                fig_subplot))
-
+                                                             fig_subplot))
+        """
         toolbar = NavigationToolbar2Tk(analysis_canvas, new)
         toolbar.update()
         analysis_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
@@ -421,8 +422,8 @@ class MyWindow:
             if event.button == 1:
                 x_point, y_point = event.xdata, event.ydata
                 indx = min(np.searchsorted(x, x_point), len(x) - 1)
-                peak_index = np.argmax(y[indx - 200:indx + 200])
-                peak_index = np.arange(len(x))[indx - 200:indx + 200][peak_index]
+                peak_index = np.argmax(y[indx - 100:indx + 100])
+                peak_index = np.arange(len(x))[indx - 100:indx + 100][peak_index]
                 linecolors[peak_index - 25:peak_index + 25] = ['lightgray' for i in
                                                                linecolors[peak_index - 25:peak_index + 25]]
                 lc.set_color(linecolors)
@@ -432,8 +433,8 @@ class MyWindow:
             if event.button == 3:
                 x_point, y_point = event.xdata, event.ydata
                 indx = min(np.searchsorted(x, x_point), len(x) - 1)
-                peak_index = np.argmax(y[indx - 200:indx + 200])
-                peak_index = np.arange(len(x))[indx - 200:indx + 200][peak_index]
+                peak_index = np.argmax(y[indx - 100:indx + 100])
+                peak_index = np.arange(len(x))[indx - 100:indx + 100][peak_index]
                 linecolors[peak_index - 25:peak_index + 25] = ['red' for i in
                                                                linecolors[peak_index - 25:peak_index + 25]]
                 lc.set_color(linecolors)
@@ -446,12 +447,12 @@ class MyWindow:
                                  ha='center',
                                  fontsize=3, color='r', rotation=90)
                 canvas.draw()
-
+    """
     def reset_canvas(self, linecolors, canvas, lc, subplot):
         linecolors = ['k'] * len(linecolors)
         lc.set_color(linecolors)
         canvas.draw()
-
+    """
     def detect_peaks(self, file_name):
         if 'recalibrated_data' not in self.data_dictionary[file_name]:
             self.baseline_correct_recalibrate(file_name)
