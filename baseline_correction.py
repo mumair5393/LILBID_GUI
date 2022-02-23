@@ -58,9 +58,9 @@ def airPLS(x, lambda_=100, porder=1, itermax=15):
     return z
 
 
-def baseline_correction(data):
+def baseline_correction(data, lambda_=100, porder=1, itermax=20):
     x, y = data[:, 0], data[:, 1]
-    baseline = airPLS(y, lambda_=100, porder=1, itermax=20)
+    baseline = airPLS(y, lambda_, porder, itermax)
     c = y - baseline
     c[np.where(c < 0)] = 0.000001
     c = c + 0.007

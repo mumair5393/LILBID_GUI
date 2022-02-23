@@ -92,3 +92,16 @@ def automated_recal(file_name, data):
         recalibrated_data[j, 0] = m(j*timestep, fitparameter)
     return recalibrated_data, check_recal_manually
 
+def manual_recalibration(data, detected_peaks, corrected_peaks):
+    recalibrated_peaks = np.hstack([detected_peaks.reshape(-1, 1), corrected_peaks.reshape(-1, 1)])
+    for j in range(recalibrated_peaks.shape[0]):
+        for t in range(data.shape[0]):
+            if data[t, 0] > recalibrated_peaks[j, 0]:
+                recalibrated_peaks[j, 0] = (t-1) * timestep
+                break
+    fitparameter = np.polyfit( recalibrated_peaks[:, 0], recalibrated_peaks[:, 1], 2)
+    ### apply new fit function to data[0,:]
+    recalibrated_data=np.copy(data)
+    for j in range(recalibrated_data.shape[0]):
+        recalibrated_data[j, 0] = m(j*timestep, fitparameter)
+    return recalibrated_data
