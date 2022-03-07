@@ -9,4 +9,21 @@ The application can be downloaded from the following links
 [Linux](https://www.dropbox.com/s/nt8060usm37rjc2/LILBID_Analysis?dl=0)
 
 ## MacOS Application
-[MacOS](https://www.dropbox.com/s/gtzlqkdy5husou3/LILBID%20Analysis?dl=0)
+### Step 1: Create the virtual enviroment
+´python3 -m venv lilbid_gui´
+
+### Step 2: Activate the virtual environment
+´source lilbid_gui/bin/activate´
+
+### Step 3: Install dependencies
+´pip install numpy scipy pandas PyQt5 pyinstaller pyqtgraph´
+
+### Step 4: Clone the repository
+´git clone https://github.com/mumair5393/LILBID_GUI.git´
+
+### Step 5: Build the application
+´cd LILBID_GUI`
+´pyinstaller main.py --onefile --name="LILBID Analysis"´
+
+### Step 6: Run the application.
+Run the application from the following path LILBID_GUI/dist/LILBID Analysis
