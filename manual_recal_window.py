@@ -67,6 +67,7 @@ class Manual_Recalibration_Window(QWidget, Ui_Manual_Recalibration):
                 self.hidden_peaks[str(peak_index)] = {}
                 self.hidden_peaks[str(peak_index)]['plot'] = self.p1.plot(x[peak_index-20:peak_index+20], y[peak_index-20:peak_index+20], pen=(228, 228, 255))
 
+
     def selectPeaks(self, event):
         modifierPressed = QApplication.keyboardModifiers()
         if modifierPressed  == Qt.ShiftModifier and event._button == Qt.LeftButton:
