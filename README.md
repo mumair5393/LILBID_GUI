@@ -9,6 +9,9 @@ The application can be downloaded from the following links
 [Linux](https://www.dropbox.com/s/nt8060usm37rjc2/LILBID_Analysis?dl=0)
 
 ## MacOS Application
+[MacOS](https://www.dropbox.com/s/wi4uu58vlp5377i/LILBID%20Analysis.zip?dl=0)
+
+## Compile manually
 ### Step 1: Create the virtual enviroment
 `python3 -m venv lilbid_gui`
 
